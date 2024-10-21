@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Tasks{% endblock title %}
+
+{% block content %}
+<h1>Tasks</h1>
+
+{% for task in tasks %}
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ task["name"] }}</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">{{ task["summary"] }}</h6>
+      <p class="card-text">{{ task["description"]|truncate(64) }}</p>
+      
+      <a href="{{ url_for('single_task', pk=task['id']) }}" class="card-link">>Another link</a>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock content %}
